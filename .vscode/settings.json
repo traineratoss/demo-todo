@@ -1,0 +1,9 @@
+{
+    "[typescript]": {
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+    "volar.autoCompleteRefs": false
+}
