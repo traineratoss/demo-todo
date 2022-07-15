@@ -13,6 +13,10 @@ const counter = reactive({
 });
 // const counter = ref(0);
 
+function getUpdatedCounter() {
+    return counter.updated;
+}
+
 watch(() => counter.updated, (newValue, oldValue) => {
     console.log(`Counter updated ${oldValue} -> ${newValue}`);
 });
@@ -35,11 +39,19 @@ function handleTodoItemCompleted(todoItemId, completed) {
     });
     counter.updated++;
 }
+
+const checkbox = ref(true);
+
+watch(checkbox, newValue => {
+    console.log(`checkbox: ${newValue}`);
+});
 </script>
 
 <template>
-    <p>{{ counter.updated }}</p>
-    <p>{{ counter.deleted }}</p>
+    <span>Two-way data binding (v-model):</span>
+    <input type="checkbox" v-model="checkbox" />
+    <p>Updated: {{ counter.updated }}</p>
+    <p>Deleted: {{ counter.deleted }}</p>
     <div class="todo-list">
         <TodoListItem
             v-for="todo of reactiveTodos"
