@@ -1,5 +1,6 @@
 <script setup>
 import { computed, ref } from 'vue';
+import printTodoItem from '../utils/printTodoItem';
 
 const props = defineProps({
     id: Number,
@@ -9,7 +10,7 @@ const props = defineProps({
 
 const emit = defineEmits(['todoItemDeleted', 'todoItemCompleted']);
 
-const newTitle = computed(() => `${props.id}. ${props.title}[${props.completed}]`);
+const newTitle = computed(() => printTodoItem(props.id, props.title, props.completed));
 
 function handleChange(event) {
     emit('todoItemCompleted', event.target.checked);
